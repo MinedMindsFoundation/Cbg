@@ -1,6 +1,18 @@
 require 'sinatra'
+require 'pg'
+
 load './local_env.rb' if File.exist?('./local_env.rb')
 
+def db()
+  db_params = {
+    host: ENV['host'],
+    port: ENV['port'],
+    dbname: ENV['dbname'],
+    user: ENV['user'],
+    password: ENV['password']
+  }
+  PG::Connection.new(db_params)
+end
 
 get '/'do
     erb :index
@@ -34,7 +46,6 @@ get '/bloghome2'do
     erb :bloghome2
 end
 
-
 get '/blogpost'do
     erb :blogpost
 end
@@ -63,6 +74,16 @@ get '/sidebar'do
     erb :sidebar
 end
 
-get '/fullwidth'do
-    erb :fullwidth
+get '/manifesto'do
+    erb :manifesto
+end
+
+post '/manifesto' do
+ 
+name = params[:name]
+email_address = params[:email_address]
+ 
+ db.exec("INSERT INTO manifesto (name,email_address) values ('#{name}','#{email_address}')")
+ 
+ redirect ('/manifesto')
 end

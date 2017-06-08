@@ -13,9 +13,13 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/modern-business.css" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet">
+
+ 
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
@@ -50,51 +54,19 @@
                     <li>
                         <a href="/about">About</a>
                     </li>
-                    <li>
-                        <a href="/services">Services</a>
-                    </li>
+                  
                     <li>
                         <a href="/contact">Contact</a>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="/portfolio1col">1 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="/portfolio2col">2 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="/portfolio3col">3 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="/portfolio4col">4 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="/portfolioitem">Single Portfolio Item</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="/bloghome1">Blog Home 1</a>
-                            </li>
-                            <li>
-                                <a href="/bloghome2">Blog Home 2</a>
-                            </li>
-                            <li>
-                                <a href="/blogpost">Blog Post</a>
-                            </li>
-                        </ul>
-                    </li>
+                                       
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="/fullwidth">Full Width Page</a>
+                                <a href="/manifesto">Manifesto</a>
+                            </li>
+                            <li>
+                                <a href="/services">Services</a>
                             </li>
                             <li>
                                 <a href="/sidebar">Sidebar Page</a>
@@ -118,14 +90,34 @@
     </nav>
     <%=yield%>
     <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p style="text-align:center">Copyright &copy; 2017 Coalition for a brighter Greene</p>
-                    <p style="text-align:center"> Site Designed by <a href= "http://www.minedminds.org">Mined Minds</a></p>
-                </div>
+     <footer>
+        <hr>
+        <div class="container">
+          <!-- <div class="row"> -->
+            <div class="col-lg-5 col-sm-6 col-lg-offset-1">
+              <b>The Coalition for a Brighter Green</b><br>
+              <i class="fa fa-envelope"></i><a href="mailto:info@minedminds.org" class="email" data-animate-hover="pulse">email@address.com</a><br>
+             <a href ="tel:724255****">(724)250-****</a><br> 
+              <a href="https://www.facebook.com/Coalition-for-a-Brighter-Greene-560389687500356" class="external facebook" data-animate-hover="pulse" target="_blank"><i class="fa fa-facebook"></i></a>
             </div>
-        </footer>
+            <hr class="hidden-sm hidden-md hidden-lg hidden-xl">
+            <div class="col-lg-6 col-sm-6">
+              <h5 class="subscribetext"><a href='/contact'>Contact us</a>, and subscribe to our mailing list:</h5>
+              <form class="subscribe" action="subscribe" method="POST">
+                <div class="input-group">
+                  <input type="email" class="form-control2" name="email" placeholder="mail@example.com">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa fa-send"></i></button>
+                  </span>
+                </div>
+              </form>     
+            </div>
+          <!-- </div> -->
+      </div>
+        <div class="row centered">
+          <p class="centered">&copy; </p>
+        </div>
+</footer>       
     
     
     <!-- /.container -->
