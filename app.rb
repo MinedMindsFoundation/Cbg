@@ -15,8 +15,11 @@ def db()
   PG::Connection.new(db_params)
 end
 
-get '/'do
-    erb :index
+get '/' do
+
+message = params[:message] || ''
+  messages = {'' => '', 'added' => 'Thanks, for joining our mailing list.', 'exists' => 'You have already joined our mailing list'}
+	erb :index, :locals => {:message => messages[message]}
 end
 
 get '/contact'do
@@ -38,11 +41,10 @@ name = params[:name]
 phone = params[:phone]
 email = params[:email]
 message = params[:message]
-thankyou = "Thanks For Contacting Coalition for a brighter Greene" 
+reason = params[:reason]
 sum = params[:sum]
 
  robot = params[:robot]
-  sum = params[:sum]
   
   if robot == sum
     Pony.mail(
@@ -87,8 +89,8 @@ get '/faq'do
     erb :faq
 end
 
-get'/bloghome1'do
-    erb :bloghome1
+get'/blog'do
+    erb :blog
 end
 
 get '/bloghome2'do
@@ -99,32 +101,26 @@ get '/blogpost'do
     erb :blogpost
 end
 
-get'/portfolio1col'do
-    erb :portfolio1col
-end
+post '/subscribe' do
+  email = params[:email]
 
-get'/portfolio2col'do
-    erb :portfolio2col
-end
-
-get'/portfolio3col'do
-    erb :portfolio3col
-end
-
-get'/portfolio4col'do
-    erb :portfolio4col
-end
-
-get'/portfolioitem'do
-    erb :portfolioitem
-end
-
-get '/sidebar'do
-    erb :sidebar
+ check_email = db.exec("SELECT * FROM mailing_list WHERE email = '#{email}'")
+     
+  if check_email.num_tuples.zero? == false
+    db.close
+    redirect '/?message=exists'
+  else
+    db.exec("INSERT INTO mailing_list (email) VALUES ('#{email}');")
+    db.close
+    redirect '/?message=added'
+  end
 end
 
 get '/manifesto'do
-    erb :manifesto
+  signed = db.exec("SELECT * FROM manifesto")
+   
+ erb :manifesto, :locals => {signed: signed}
+ 
 end
 
 post '/manifesto' do
@@ -136,3 +132,14 @@ email_address = params[:email_address]
  
  redirect ('/manifesto')
 end
+
+get '/404' do
+ 
+ erb :ohno
+ 
+end
+
+not_found do
+  redirect '/404'
+end
+

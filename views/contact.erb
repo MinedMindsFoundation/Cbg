@@ -56,7 +56,6 @@
                   <div class="controls">
                     <label>* Name:</label>
                     <input required = "true" type="text" class="form-control" id="name" name="name" required>
-                    <input type="hidden" name="page" value="contact">
                     <p class="help-block"></p>
                   </div>
                 </div>
@@ -70,7 +69,19 @@
                   <div class="controls">
                     <label>* Email Address:</label>
                     <input   type="email" class="form-control" id="email" name="email" required = "true" >
-                    <input type="hidden" name="reason" value="Info">
+                  </div>
+                </div>
+                  <div class="control-group form-group">
+                  <div class="controls">
+                    <label>* Reason for Contact:</label>
+                    <select name="reason" style="width:100%">
+                       <option selected="" disabled="" style="display: none" value="">-Reason for Contact-</option> 
+                       <option value="Volunteer">Volunteer</option>
+                       <option value="Share Story">Share Story</option>
+                       <option value="Services">Services</option>
+                       <option value="Register">Register</option>
+                       <option value="Other">Other</option>
+                   </select>
                   </div>
                 </div>
                  <div class="control-group form-group">
