@@ -8,3 +8,27 @@
  margin-bottom: 1rem;
  margin-top: 1rem;
 }
+
+
+.floating_button{
+  display: block; margin-top: 0px; margin-left: 0px; width:auto ; height: auto; 
+  position:fixed; z-index:999999; overflow: auto;
+}
+
+.reverse_floating_button{
+  display: block; margin-top: 0px; margin-left: 0px; width:auto ; height: auto; 
+  position:fixed; z-index:999999; overflow: auto;
+}
+
+.reverse_floating_button a {
+  text-decoration: none;
+  color: #67C4AE;
+}
+
+.floating_button a:hover, .reverse_floating_button a:hover {
+  text-decoration: none;
+  color: #1E2C79
+}
+/*
+ * LAYOUT
+ */
