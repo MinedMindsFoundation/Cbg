@@ -85,20 +85,17 @@ get '/pricing'do
     erb :pricing
 end
 
-get '/faq'do
-    erb :faq
+get '/documentation'do
+    erb :documentation
 end
 
 get'/blog'do
     erb :blog
 end
 
-get '/bloghome2'do
-    erb :bloghome2
-end
+get '/support' do
 
-get '/blogpost'do
-    erb :blogpost
+ erb :support
 end
 
 post '/subscribe' do
@@ -127,10 +124,18 @@ post '/manifesto' do
  
 name = params[:name]
 email_address = params[:email_address]
+ time = Time.new
+ date = time.strftime("%Y-%m-%d")
  
- db.exec("INSERT INTO manifesto (name,email_address) values ('#{name}','#{email_address}')")
+ db.exec("INSERT INTO manifesto (name,email_address,date) values ('#{name}','#{email_address}','#{date}')")
  
  redirect ('/manifesto')
+end
+
+get '/current_happenings' do
+ 
+ erb :current_happenings
+ 
 end
 
 get '/404' do
