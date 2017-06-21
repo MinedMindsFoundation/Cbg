@@ -148,3 +148,7 @@ not_found do
   redirect '/404'
 end
 
+get '/new' do
+ 
+erb :new
+end
