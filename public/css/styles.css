@@ -39,3 +39,6 @@ iframe {
 }
 */
 
+.noborder {
+ border-bottom:none;
+}

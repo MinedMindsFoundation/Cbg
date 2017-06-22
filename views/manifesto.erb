@@ -36,7 +36,9 @@
        <H4 style="text-align:center">These People have signed the manifesto, now its your turn. </H4>
 <p style="margin-left:2rem;">
    <% signed.each do |signers| %>
- 
-  <a href="mailto:<%=signers['email_address']%>" style="margin-right:.75rem;"><%=signers['name']%></a><%=signers['date']%>      
+ <table>
+ <td><a href="mailto:<%=signers['email_address']%>" style="margin-right:.75rem;"><%=signers['name']%></a><%=signers['date']%> </td>
+</table>
+       
  <%end%>
  </p>
