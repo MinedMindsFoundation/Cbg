@@ -49,7 +49,7 @@ sum = params[:sum]
   if robot == sum
     Pony.mail(
         :to => "#{email}",
-#        :bcc => '', 
+        :cc => 'info@coalitionforabrightergreene.org', 
         :from => 'joseph@minedminds.org',
         :subject => "CBG", 
         :content_type => 'text/html', 
@@ -151,4 +151,29 @@ end
 get '/new' do
  
 erb :new
+end
+
+get '/volunteer'do
+ 
+ thanks = params[:thanks] || ''
+  num1 = rand(9)
+  num2 = rand(9)
+  sum = num1 + num2
+  deliver = params[:deliver] || ''
+  messages = {'' => '', 'success' => "Thank you for your message. We'll get back to you shortly.", 'error' => 'Sorry, there was a problem delivering your message.'}
+  message = messages[deliver]
+ 
+    erb :volunteer, :locals => {thanks: thanks, num1: num1, num2: num2, sum: sum, message: message }
+end
+
+
+
+post '/volunteer' do
+ 
+  num1 = rand(9)
+  num2 = rand(9)
+  sum = num1 + num2
+
+ erb :volunteer, :locals => {thanks: thanks, num1: num1, num2: num2, sum: sum, message: message }
+ 
 end
