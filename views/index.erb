@@ -43,7 +43,7 @@
     .carousel-inner .next        { left:  50%; }
     .carousel-inner .prev            { left: -50%; }
   .carousel-col                { width: 50%; }
-    .active > div:first-child + div { display:block; }
+    .active > div:first-child + div { display:block; } 
 }
 /*md*/
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -53,9 +53,9 @@
     .carousel-inner .prev            { left: -33%; }
   .carousel-col                { width: 33%; }
     .active > div:first-child + div { display:block; }
-  .active > div:first-child + div + div { display:block; }
+  .active > div:first-child + div + div { display:block; }*/
 }
-/*lg*/
+/*/*lg*/
 @media (min-width: 1200px) {
   .carousel-inner .active.left { left: -25%; }
   .carousel-inner .active.right{ left:  25%; }
@@ -74,8 +74,17 @@
 .blue {background: blue;}
 .green {background: green;}
 .yellow {background: yellow;}
-     
 
+  .carousel .item {
+  text-align: center;
+  height: 470px;
+}   
+.inner-item {
+    text-align: center;
+    img {
+        margin: 0 auto;
+    }
+}
 </style>
 
 
@@ -92,15 +101,18 @@
 <!-- Wrapper for slides -->
   <div class="carousel-inner"> 
    <div class="item active"> 
+    <div class='fill' style="background-image:url('img/newone.jpg');"></div>
+   </div>
+   <div class="item">
+    <div class="fill" style="background-image:url('img/iaTwo.jpg');"></div>
+   </div>
+   <div class="item">
     <div class="fill" style="background-image:url('img/Do-you-want-to-get-Sober-Stay-Positive.jpg');"></div>
    </div>
-   <div class="item">
-    <div class="fill" style="background-image:url('img/rsz_1how-drug-rehabs-work-for-addicts.jpg');"></div>
-   </div>
-   <div class="item">
-    <div class="fill" style="background-image:url('img/freedom.jpg');"></div>
-   </div>
   </div>
+
+
+
 
 <!-- Controls -->
   <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -111,6 +123,50 @@
   </a>
  </header>
 <br><br><br>
+
+
+     <div class="col-lg-12"  id="who">
+
+<div style="text-align:center" >
+ </div>
+<div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header" style="text-align:center">Spotlight</h2>
+             <p class="col-md-6 text-center  col-lg-offset-3">
+             
+              
+              
+              In our annual spotlight section we like to highlight a champion of recovery and to say thanks a to 
+              member of the community who has done something to help alleviate the issues surronding the drug problem in Greene county. 
+             </p>
+            </div>
+ 
+            <div class="col-md-4 text-center  col-lg-offset-2">
+                <div class="thumbnail">
+                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
+                    <div class="caption">
+                        <h3>John Smith
+                     </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste saepe et quisquam nesciunt maxime.</p>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="thumbnail">
+                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
+                    <div class="caption">
+                        <h3>John Smith
+                            
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste saepe et quisquam nesciunt maxime.</p>
+                       
+                    </div>
+                </div>
+            </div>
+ </div>
+
+</div>
 
  <div class="col-lg-6">
   <div >

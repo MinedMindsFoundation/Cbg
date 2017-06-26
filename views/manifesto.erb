@@ -28,21 +28,51 @@
   </tr>
   <tr>
 <!--   <td><input type="reset"></td>-->
+
    <td colspan="2" style="text-align:center"><input id="signed" type="submit" value="Submit Form"  onClick="ga('send', 'event', { eventCategory: 'manifesto', eventAction: 'button_click', eventLabel: 'signed'});"/></td>
   </tr>
+  </form>
  </table>
-</form>
+
 
 
        <H4 style="text-align:center">These People have signed the manifesto, now its your turn. </H4>
 <p style="margin-left:2rem;">
-    <table style="width:100%">
-
- <% signed.each do |signers| %>
- <td><a href="mailto:<%=signers['email_address']%>"><%=signers['name']%></a><%=signers['date']%> </td>
-
-       
- <%end%>
-     </table>
+   <% signed.each do |signers| %>
  
-</p>
+<!-- <table cellpadding="2" width="50%"  align="center" cellspacing="2" table-layout=fixed>-->
+
+
+                                   <body>
+  <table BORDER="5"    WIDTH="50%"   CELLPADDING="2" CELLSPACING="2" align ="center" table-layout: fixed>
+   <TR>
+      <!--<TH COLSPAN="4"><BR><H3>TABLE TITLE</H3>-->
+
+      </TH>
+   </TR>
+   <TR>
+      <TH>Name</TH>
+      <TH>Date</TH>
+   <!--<TH>Email</TH>-->
+   </TR>
+   <TR ALIGN="CENTER">
+      <TD><%=signers['name']%></TD>
+      <TD><%=signers['date']%></TD>
+    <!--<TD><%=signers['email_address']%></TD>-->
+   </TR>
+                         
+  
+  
+
+
+</table>
+     </body>                       
+</html>
+
+ 
+  
+
+     
+ <%end%>
+     
+ </p>
