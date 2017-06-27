@@ -36,7 +36,7 @@
 
 
 
-       <H4 style="text-align:center">These People have signed the manifesto, now its your turn. </H4>
+       <H4 style="text-align:center">these People have signed the manifesto, now its your turn. </H4>
 <p style="margin-left:2rem;">
    <% signed.each do |signers| %>
  
@@ -44,22 +44,22 @@
 
 
                                    <body>
-  <table BORDER="5"    WIDTH="50%"   CELLPADDING="2" CELLSPACING="2" align ="center" table-layout: fixed>
-   <TR>
-      <!--<TH COLSPAN="4"><BR><H3>TABLE TITLE</H3>-->
+  <table BORDER="5"       CELLPADDING="2" CELLSPACING="2" align ="center" table-layout: fixed>
+   <tr>
+      <!--<th COLSPAN="4"><BR><H3>TABLE TITLE</H3>-->
 
-      </TH>
-   </TR>
-   <TR>
-      <TH>Name</TH>
-      <TH>Date</TH>
-   <!--<TH>Email</TH>-->
-   </TR>
-   <TR ALIGN="CENTER">
-      <TD><%=signers['name']%></TD>
-      <TD><%=signers['date']%></TD>
+      </th>
+   </tr>
+   <tr>
+      <th style = "text-align:center" >Name</th>
+      <th style = "text-align:center">Date</th>
+   <!--<th>Email</th>-->
+   </tr>
+   <tr ALIGN="CENTER">
+      <td width= "200px" ><%=signers['name']%></td>
+      <td width= "200px" ><%=signers['date']%></td>
     <!--<TD><%=signers['email_address']%></TD>-->
-   </TR>
+   </tr>
                          
   
   
