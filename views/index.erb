@@ -4,112 +4,51 @@
     float: none;
     margin: 0 auto;
 }
-.carousel-control { 
-    width: 8%;
-    width: 0px;
-}
-.carousel-control.left,
-.carousel-control.right { 
-    margin-right: 40px;
-    margin-left: 32px; 
-    background-image: none;
-    opacity: 1;
-}
-.carousel-control > a > span {
-    color: white;
-      font-size: 29px !important;
-}
-.carousel-col { 
-    position: relative; 
-    min-height: 1px; 
-    padding: 5px; 
-    float: left;
- }
- .active > div { display:none; }
- .active > div:first-child { display:block; }
-/*xs*/
-@media (max-width: 767px) {
-  .carousel-inner .active.left { left: -50%; }
-  .carousel-inner .active.right { left: 50%; }
-    .carousel-inner .next        { left:  50%; }
-    .carousel-inner .prev            { left: -50%; }
-  .carousel-col                { width: 50%; }
-    .active > div:first-child + div { display:block; }
-}
-/*sm*/
-@media (min-width: 768px) and (max-width: 991px) {
-  .carousel-inner .active.left { left: -50%; }
-  .carousel-inner .active.right { left: 50%; }
-    .carousel-inner .next        { left:  50%; }
-    .carousel-inner .prev            { left: -50%; }
-  .carousel-col                { width: 50%; }
-    .active > div:first-child + div { display:block; }
-}
-/*md*/
-@media (min-width: 992px) and (max-width: 1199px) {
-  .carousel-inner .active.left { left: -33%; }
-  .carousel-inner .active.right { left: 33%; }
-    .carousel-inner .next        { left:  33%; }
-    .carousel-inner .prev            { left: -33%; }
-  .carousel-col                { width: 33%; }
-    .active > div:first-child + div { display:block; }
-  .active > div:first-child + div + div { display:block; }
-}
-/*lg*/
-@media (min-width: 1200px) {
-  .carousel-inner .active.left { left: -25%; }
-  .carousel-inner .active.right{ left:  25%; }
-    .carousel-inner .next        { left:  25%; }
-    .carousel-inner .prev            { left: -25%; }
-  .carousel-col                { width: 15%; }
-    .active > div:first-child + div { display:block; }
-  .active > div:first-child + div + div { display:block; }
-    .active > div:first-child + div + div + div { display:block; }
-}
-.block {
-    width: 150px;
-    height: 30px;
-}
-.red {background: red;}
-.blue {background: blue;}
-.green {background: green;}
-.yellow {background: yellow;}
      
-
+.full-screen {
+/*  background-size: cover;*/
+  background-position: center;
+  background-repeat: no-repeat;
+}
 </style>
-
 
 <!-- Header Carousel -->
  <header id="myCarousel" class="carousel slide">
+<!-- Indicators -->
+  <ol class="carousel-indicators"> 
+   <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+   <li data-target="#myCarousel" data-slide-to="1"></li>
+   <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
 
 <!-- Wrapper for slides -->
   <div class="carousel-inner"> 
    <div class="item active"> 
-    <div class="fill"><img src='img/newone.jpg' class="img-responsive" style=" margin: 0 auto;">></div>
+    <div class="fill" style="background-image:url('img/Do-you-want-to-get-Sober-Stay-Positive.jpg');"></div>
    </div>
    <div class="item">
-    <div class="fill"><img src="img/newsie.jpg" class="img-responsive" style=" margin: 0 auto;">></div>
+    <img src="img/rsz_1how-drug-rehabs-work-for-addicts.jpg">
    </div>
    <div class="item">
-    <div class="fill"><img src='img/iaOne.jpg' class="img-responsive" style=" margin: 0 auto;"></div>
-   </div>
-   <div class="item">
-    <div class="fill"><img src='img/iaTwo.jpg' class="img-responsive" style=" margin: 0 auto;"></div>
-   </div> 
-   <div class="item">
-    <div class="fill"><img src='img/iaThree.jpg' class="img-responsive" style=" margin: 0 auto;"></div>
-   </div>
-   <div class="item">
-    <div class="fill"><img src='img/newbie.jpg' class="img-responsive" style=" margin: 0 auto;"></div>
+    <div class="fill" style="background-image:url('img/freedom.jpg');"></div>
    </div>
   </div>
-</header>
 
+<!-- Controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+   <span class="icon-prev"></span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+   <span class="icon-next"></span>
+  </a>
+ </header>
 
+  
+<hr>
 
  <div class="row">
   <div class="col-lg-12">
-   <h2 class="page-header" style="text-align:center">Spotlight</h2>
+   <h2 style="text-align:center">Spotlight</h2>
    <p class="col-md-6 text-center  col-lg-offset-3">
     In our annual spotlight section we like to highlight a champion of recovery and to say thanks a to 
     member of the community who has done something to help alleviate the issues surronding the drug problem in Greene county. 
@@ -134,9 +73,6 @@
    </div>
   </div>
 </div>
-
-
-
  <div class="col-lg-6">
   <div >
    <div class="panel panel-default">
@@ -153,13 +89,6 @@
        showing significant risk in four key areas and 39% of students at risk in a significant
        number of areas.
 
-<!--
- 2015 Pennsylvania Coroners Report reveals Greene ranks 5 th of 67 Pennsylvania
- Counties in death-due- to-overdose with 36% more deaths than the previous year.
- 2015 Pennsylvania Coroners Report reveals the Greene County death-due- to-overdose
- rate is 37% higher than the Pennsylvania average, and is higher than Washington,
- Fayette or Allegheny counties.Greene County Children and Youth data show an increase in county babies born with illegal substances in their systems: 33 in 2015 versus 13 in 2012.
--->
       </p>
       <p><a href="section#whatever">Learn More</a></p>
      </div>
@@ -178,13 +107,6 @@
       <p>The Brighter Greene Coalition provides valuable partnerships between various sectors
        of the community.  A working coalition allows our community to come together and
        represent a collaboration of various citizens with one united goal ...
-
-<!--
-    to provide a unified
-   approach to ensuring that our community is against illicit drug usage.  Furthermore it
-   is through these citizens and partnerships that the Brighter Greene Coalition is able to
-   reach such a large audience in various sectors of the community.
--->
       </p>
       <p><a href="section#whatever">Learn More</a></p>
      </div>
@@ -220,58 +142,100 @@
     <p>
      The Mission of The Coalition for a Brighter Greene is to advocate continuous progress toward a drug-free Greene County. We promote efforts that further this purpose by advancing positive, durable change. 
     </p>
-<!--
-We provide nonpartisan leadership, collaboration, and
- resources that inform, educate and empower our citizens. We encourage and support enduring success in prevention, accountability and recovery. Our work cultivates a caring,safe, healthy, thriving community.
--->
     <p><a href="about">Learn More</a></p>
    </div>
   </div>
 </div>
 
- <div class="container">
-  <div class="row">
-   <div class="col-xs-11 col-md-10 col-lg-12">
-    <div id="carousel" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="2500">
-     <div class="carousel-inner">
-      <div class="item active">
-       <div class="carousel-col">
-        <div class="block red img-responsive">Partner</div>
-       </div>
-      </div>
-      <div class="item">
-       <div class="carousel-col">
-        <div class="block green img-responsive">Another partner</div>
-       </div>
-      </div>
-      <div class="item">
-       <div class="carousel-col">
-        <img src="img/firstbaptist.jpg" class="img-responsive">
-       </div>
-      </div>
-      <div class="item">
-       <div class="carousel-col"> 
-        <div class="block yellow img-responsive">One more partner</div>
-       </div>
-      </div>
-     </div>
+ <!-- #region Jssor Slider Begin -->
+    <script src="js/jssor.slider-25.0.7.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        jssor_1_slider_init = function() {
+
+            var jssor_1_options = {
+              $AutoPlay: 1,
+              $Idle: 0,
+              $SlideDuration: 5000,
+              $SlideEasing: $Jease$.$Linear,
+              $PauseOnHover: 4,
+              $SlideWidth: 140,
+              $Cols: 3
+            };
+
+            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+
+            /*#region responsive code begin*/
+            /*remove responsive code if you don't want the slider scales while window resizing*/
+            function ScaleSlider() {
+                var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+                if (refSize) {
+                    refSize = Math.min(refSize, 980);
+                    jssor_1_slider.$ScaleWidth(refSize);
+                }
+                else {
+                    window.setTimeout(ScaleSlider, 30);
+                }
+            }
+            ScaleSlider();
+            $Jssor$.$AddEvent(window, "load", ScaleSlider);
+            $Jssor$.$AddEvent(window, "resize", ScaleSlider);
+            $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+            /*#endregion responsive code end*/
+        };
+    </script>
+    <style>
+     .logos {
+      padding-right:1rem
+     }
+</style>
+    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:980px;height:100px;overflow:hidden;visibility:hidden;">
+        <!-- Loading Screen -->
+        <div data-u="loading" style="position:absolute;top:0px;left:0px;background:url('img/loading.gif') no-repeat 50% 50%;background-color:rgba(0, 0, 0, 0.7);"></div>
+        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:100px;overflow:hidden;">
+            <div>
+                <img data-u="image" class="logos" src="img/firstbaptist.jpg" />
+            </div>
+            <div>
+                <img data-u="image" class="logos" src="img/bitly.jpg" />
+            </div>
+            <div>
+                <img data-u="image" class="logos" src="img/blogger.jpg" />
+            </div>
+            <div>
+                <img data-u="image" class="logos" src="img/dnn.jpg" />
+            </div>
+
+          
+          
+         
+            <a data-u="any" href="https://wordpress.org/plugins/jssor-slider/" style="display:none">wordpress slider</a>
+        </div>
     </div>
-   </div>
-  </div>
-</div>
+    <script type="text/javascript">jssor_1_slider_init();</script>
+    <!-- #endregion Jssor Slider End -->
+  
 <script>
-$('.carousel[data-type="multi"] .item').each(function() {
-    var next = $(this).next();
-    if (!next.length) {
-        next = $(this).siblings(':first');
-    }
-    next.children(':first-child').clone().appendTo($(this));
-    for (var i = 0; i < 2; i++) {
-        next = next.next();
-        if (!next.length) {
-            next = $(this).siblings(':first');
-        }
-        next.children(':first-child').clone().appendTo($(this));
-    }
-});
+ var $item = $('.carousel .item'); 
+ var $wHeight = $(window).height();
+ $item.eq(0).addClass('active');
+ $item.height($wHeight); 
+ $item.addClass('full-screen');
+
+ $('.carousel img').each(function() {
+  var $src = $(this).attr('src');
+  var $color = $(this).attr('data-color');
+  $(this).parent().css({
+   'background-image' : 'url(' + $src + ')',
+   'background-color' : $color
+  });
+  $(this).remove();
+ });
+ $(window).on('resize', function (){
+  $wHeight = $(window).height();
+  $item.height($wHeight);
+ });
+ $('.carousel').carousel({
+  interval: 6000,
+  pause: "false"
+ });
 </script>
