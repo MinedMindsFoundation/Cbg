@@ -251,4 +251,13 @@ figure.effect-zoe:hover p.icon-links a:first-child {
 .jssorb072 .iav .b {fill:#000;opacity:.5;}
 .jssorb072 .i.idn {opacity:.3;}
 
-
+    .col-centered {
+    float: none;
+    margin: 0 auto;
+}
+     
+.full-screen {
+/*  background-size: cover;*/
+  background-position: center;
+  background-repeat: no-repeat;
+}
