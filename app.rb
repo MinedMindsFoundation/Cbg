@@ -1,9 +1,9 @@
 require 'sinatra'
 require 'pg'
 require 'pony'
-
+# above gems pony mail gem pg data bsse post gres sinatra loads 
 load './local_env.rb' if File.exist?('./local_env.rb')
-
+#checks to see
 def db()
   db_params = {
     host: ENV['host'],
@@ -11,8 +11,8 @@ def db()
     dbname: ENV['dbname'],
     user: ENV['user'],
     password: ENV['password']
-  }
-  PG::Connection.new(db_params)
+  } #database conections values set to variables
+  PG::Connection.new(db_params)#confirms connection to database
 end
 
 get '/' do
@@ -30,23 +30,23 @@ get '/contact'do
   sum = num1 + num2
   deliver = params[:deliver] || ''
   messages = {'' => '', 'success' => "Thank you for your message. We'll get back to you shortly.", 'error' => 'Sorry, there was a problem delivering your message.'}
-  message = messages[deliver]
+  message = messages[deliver]#hash triggered by else state lines 70 - 72
  
-    erb :contact, :locals => {thanks: thanks, num1: num1, num2: num2, sum: sum, message: message }
+    erb :contact, :locals => {thanks: thanks, num1: num1, num2: num2, sum: sum, message: message } #loads values into database
 end
 
 post '/contact' do
 
 name = params[:name]
 phone = params[:phone]
-email = params[:email]
+email = params[:email]#block gathers user info places values into variables
 message = params[:message]
 reason = params[:reason]
 sum = params[:sum]
 
  robot = params[:robot]
   
-  if robot == sum
+  if robot == sum#confirms human interaction 
     Pony.mail(
         :to => "#{email}",
         :cc => 'info@coalitionforabrightergreene.org', 
@@ -63,12 +63,12 @@ sum = params[:sum]
            :password            => ENV['email_pass'],
            :authentication       => :plain, 
            :domain               => 'localhost:4567' 
-        }
+        }#mails and loads sender info
 
       )
      redirect '/contact?deliver=success'
   else
-    redirect '/contact?deliver=error'
+    redirect '/contact?deliver=error'#human interaction function part of
   end
 end
 
@@ -100,21 +100,22 @@ end
 
 post '/subscribe' do
   email = params[:email]
-
- check_email = db.exec("SELECT * FROM mailing_list WHERE email = '#{email}'")
-     
+# makes sure data from sender has not been entered 101 thru 108
+ check_email = db.exec("SELECT * FROM mailing_list WHERE email = '#{email}';")
+ puts "this is check_email: '#{check_email}'"
+ puts "this is email: '#{email}'"    
   if check_email.num_tuples.zero? == false
-    db.close
+    # db.close
     redirect '/?message=exists'
   else
     db.exec("INSERT INTO mailing_list (email) VALUES ('#{email}');")
-    db.close
-    redirect '/?message=added'
+    # db.close
+    redirect '/?message=added'#if email not already entered data passed to database
   end
 end
 
 get '/manifesto'do
-  signed = db.exec("SELECT * FROM manifesto")
+  signed = db.exec("SELECT * FROM manifesto")#all persons who have signed manifesto
    
  erb :manifesto, :locals => {signed: signed}
  
@@ -124,11 +125,11 @@ post '/manifesto' do
  
 name = params[:name]
 email_address = params[:email_address]
- time = Time.new
- date = time.strftime("%Y-%m-%d")
+ time = Time.new#kernel for registering time of new signup
+ date = time.strftime("%Y-%m-%d")#kernel for registering date
  
- db.exec("INSERT INTO manifesto (name,email_address,date) values ('#{name}','#{email_address}','#{date}')")
- 
+db.exec("INSERT INTO manifesto (name,email_address,date) values ('#{name}','#{email_address}','#{date}')") 
+ #places data into database of new signup
  redirect ('/manifesto')
 end
 
@@ -163,17 +164,60 @@ get '/volunteer'do
   messages = {'' => '', 'success' => "Thank you for your message. We'll get back to you shortly.", 'error' => 'Sorry, there was a problem delivering your message.'}
   message = messages[deliver]
  
+
+
     erb :volunteer, :locals => {thanks: thanks, num1: num1, num2: num2, sum: sum, message: message }
 end
 
 
-
 post '/volunteer' do
- 
-  num1 = rand(9)
-  num2 = rand(9)
-  sum = num1 + num2
 
- erb :volunteer, :locals => {thanks: thanks, num1: num1, num2: num2, sum: sum, message: message }
+  name = params[:name]
+  phone = params[:phone]
+  email = params[:email]#block gathers user info places values into variables
+  message = params[:message]
+  reason = params[:reason]
+  sum = params[:sum]
+  time = Time.new#kernel for registering time of new signup
+  date = time.strftime("%Y-%m-%d")#kernel for registering date
+  robot = params[:robot]
+  
+  if robot == sum #confirms human interaction 
+    Pony.mail(
+        :to => "#{email}",
+        :cc => 'info@coalitionforabrightergreene.org', 
+        :from => 'joseph@minedminds.org',
+        :subject => "CBG", 
+        :content_type => 'text/html', 
+        :body => erb(:email2,:layout=>false),
+        :via => :smtp, 
+        :via_options => {
+          :address              => 'smtp.gmail.com',
+          :port                 => '587',
+          :enable_starttls_auto => true,
+           :user_name           => ENV['email'],
+           :password            => ENV['email_pass'],
+           :authentication       => :plain, 
+           :domain               => 'localhost:4567' 
+        }#mails and loads sender info
+
+      )
+
+puts "This is the info:
+
+name = '#{name}'
+email = '#{email}'
+date = '#{date}'
+phone = '#{phone}'
+message ='#{message}'
+reason = '#{reason}'"
+   
+  db.exec("INSERT INTO volunteer (name,email,date,phone,message, reason) VALUES ('#{name}','#{email}','#{date}','#{phone}','#{message}','#{reason}');") 
+   #places data into database of new signup
  
+
+        redirect '/contact?deliver=success'
+  else
+    redirect '/contact?deliver=error'#human interaction function part of
+  end
 end
