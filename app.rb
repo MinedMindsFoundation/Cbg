@@ -5,24 +5,24 @@ require 'pony'
 load './local_env.rb' if File.exist?('./local_env.rb')
 
 #checks to see
-def db()
-  db_params = {
-    host: ENV['host'],
-    port: ENV['port'],
-    dbname: ENV['dbname'],
-    user: ENV['user'],
-    password: ENV['password']
-  } #database conections values set to variables
-  PG::Connection.new(db_params)#confirms connection to database
-end
-
-get '/' do
-
-message = params[:message] || ''
-  messages = {'' => '', 'added' => 'Thanks, for joining our mailing list.', 'exists' => 'You have already joined our mailing list'}
-	erb :index, :locals => {:message => messages[message]}
-end
-
+#def db()
+#  db_params = {
+#    host: ENV['host'],
+#    port: ENV['port'],
+#    dbname: ENV['dbname'],
+#    user: ENV['user'],
+#    password: ENV['password']
+#  } #database conections values set to variables
+#  PG::Connection.new(db_params)#confirms connection to database
+#end
+#
+#get '/' do
+#
+#message = params[:message] || ''
+#  messages = {'' => '', 'added' => 'Thanks, for joining our mailing list.', 'exists' => 'You have already joined our mailing list'}
+#	erb :index, :locals => {:message => messages[message]}
+#end
+#
 get '/contact'do
  
  thanks = params[:thanks] || ''
