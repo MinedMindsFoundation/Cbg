@@ -1,4 +1,4 @@
-/*!
+f/*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -4214,9 +4214,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     padding-left: 0;
   }
 }
-.navbar-fixed-top .navbar-collapse,
-.navbar-fixed-bottom .navbar-collapse {
-  max-height: 340px;
+@media (max-width: 320px){  
+  .navbar-fixed-top .navbar-collapse,
+  .navbar-fixed-bottom .navbar-collapse {
+    max-height: 340px;
+  }
 }
 @media (max-device-width: 480px) and (orientation: landscape) {
   .navbar-fixed-top .navbar-collapse,
@@ -4275,7 +4277,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   float: left;
   height: 50px;
   padding: 15px 15px;
-  font-size: 18px;
+  font-size: 9px;
   line-height: 20px;
 }
 .navbar-brand:hover,
@@ -4381,7 +4383,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     margin-bottom: 0;
     vertical-align: middle;
   }
-  .navbar-form .form-control {
+
+
+
+}
+@media only screen and (max-width: 320px){font-size: 3em;}
+ .navbar-form .form-control {
     display: inline-block;
     width: auto;
     vertical-align: middle;
@@ -6752,6 +6759,11 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important;
+  }
+}
+@media (max-width:340px) {
+  .navbar-brand {
+    font-size: 16px !important;
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */

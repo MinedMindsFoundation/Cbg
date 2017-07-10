@@ -40,6 +40,10 @@
             /*remove responsive code if you don't want the slider scales while window resizing*/
             function ScaleSlider() {
                 var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+
+                if(refSize == 298 || refSize == 286){
+                  refSize = 250;
+                }
                 if (refSize) {
                     refSize = Math.min(refSize,350);
                     jssor_1_slider.$ScaleWidth(refSize);
