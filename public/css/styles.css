@@ -11,12 +11,12 @@
 
 
 .floating_button{
-  display: block; margin-top: 0px; margin-left: 0px; width:auto ; height: auto; 
+  display: block; margin-top: 0px; margin-left: 0px; width:auto ; height: auto;
   position:fixed; z-index:999999; overflow: auto;
 }
 
 .reverse_floating_button{
-  display: block; margin-top: 0px; margin-left: 0px; width:auto ; height: auto; 
+  display: block; margin-top: 0px; margin-left: 0px; width:auto ; height: auto;
   position:fixed; z-index:999999; overflow: auto;
 }
 
@@ -32,6 +32,10 @@
 /*
  * LAYOUT
  */
+.subscribetext{
+    margin-top:0px;
+}
+
 
 /*
 iframe {
@@ -255,7 +259,7 @@ figure.effect-zoe:hover p.icon-links a:first-child {
     float: none;
     margin: 0 auto;
 }
-     
+
 .full-screen {
 /*  background-size: cover;*/
   background-position: center;
