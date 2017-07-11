@@ -1,9 +1,8 @@
 require 'sinatra'
 require 'pg'
 require 'pony'
-
+#gems sinatra for structure pg for database pony for mail
 load './local_env.rb' if File.exist?('./local_env.rb')
-
 
 def db()
   db_params = {
@@ -13,7 +12,7 @@ def db()
     user: ENV['user'],
     password: ENV['password']
   }
-  PG::Connection.new(db_params)
+  PG::Connection.new(db_params) #sets connection with db
 end
 
 get '/' do
@@ -22,6 +21,7 @@ message = params[:message] || ''
   messages = {'' => '', 'added' => 'Thanks, for joining our mailing list.', 'exists' => 'You have already joined our mailing list'}
     erb :index, :locals => {:message => messages[message]}
 end
+
 
 get '/contact'do
  #allows protection against robot spammers
@@ -74,6 +74,7 @@ sum = params[:sum]
 end
 
 
+
 get '/about'do
     erb :about
 end
@@ -101,11 +102,12 @@ end
 #
 #end
 
+
 get '/support' do
 
  erb :support
 end
-#
+
 post '/subscribe' do
   email = params[:email]
 
@@ -120,7 +122,6 @@ post '/subscribe' do
     redirect '/?message=added'
   end
 end
-
 
 
 get '/manifesto'do
@@ -179,12 +180,13 @@ end
 
 
 post '/volunteer' do
+
+
+  db.exec("INSERT INTO manifesto (name,email,date,phone ,reason) values ('#{name}','#{email}','#{date}',#{phone},#{reason})")
  # robot spammer protection
   num1 = rand(9)
   num2 = rand(9)
   sum = num1 + num2
 
  erb :volunteer, :locals => {thanks: thanks, num1: num1, num2: num2, sum: sum, message: message }
-
 end
-
