@@ -1,9 +1,8 @@
 require 'sinatra'
 require 'pg'
 require 'pony'
-
+#gems sinatra for structure pg for database pony for mail
 load './local_env.rb' if File.exist?('./local_env.rb')
-<<<<<<< HEAD
 
 def db()
   db_params = {
@@ -13,7 +12,7 @@ def db()
     user: ENV['user'],
     password: ENV['password']
   }
-  PG::Connection.new(db_params)
+  PG::Connection.new(db_params) #sets connection with db
 end
 
 get '/' do
@@ -22,28 +21,7 @@ message = params[:message] || ''
   messages = {'' => '', 'added' => 'Thanks, for joining our mailing list.', 'exists' => 'You have already joined our mailing list'}
 	erb :index, :locals => {:message => messages[message]}
 end
-=======
->>>>>>> 41e9efccb83498003dabe645cc14e72056646a9f
 
-#checks to see
-#def db()
-#  db_params = {
-#    host: ENV['host'],
-#    port: ENV['port'],
-#    dbname: ENV['dbname'],
-#    user: ENV['user'],
-#    password: ENV['password']
-#  } #database conections values set to variables
-#  PG::Connection.new(db_params)#confirms connection to database
-#end
-#
-#get '/' do
-#
-#message = params[:message] || ''
-#  messages = {'' => '', 'added' => 'Thanks, for joining our mailing list.', 'exists' => 'You have already joined our mailing list'}
-#	erb :index, :locals => {:message => messages[message]}
-#end
-#
 get '/contact'do
  #allows protection against robot spammers
  thanks = params[:thanks] || ''
@@ -94,39 +72,32 @@ sum = params[:sum]
   end
 end
 
-#
-#get '/about'do
-#    erb :about
-#end
-#
-#get '/services'do
-#    erb :services
-#end
-#
-#get '/pricing'do
-#    erb :pricing
-#end
-#
-#get '/documentation'do
-#    erb :documentation
-#end
-#
-#get'/blog'do
-#    erb :blog
-#end
-#
 
-get '/' do
- 
- erb :commingsoon
+get '/about'do
+    erb :about
+end
 
+get '/services'do
+    erb :services
+end
+
+get '/pricing'do
+    erb :pricing
+end
+
+get '/documentation'do
+    erb :documentation
+end
+
+get'/blog'do
+    erb :blog
 end
 
 get '/support' do
 
  erb :support
 end
-#
+
 post '/subscribe' do
   email = params[:email]
 
@@ -141,73 +112,7 @@ post '/subscribe' do
     redirect '/?message=added'
   end
 end
-#
-#get '/manifesto'do
-#  signed = db.exec("SELECT * FROM manifesto")
-#   
-# erb :manifesto, :locals => {signed: signed}
-# 
-#end
-#
-#post '/manifesto' do
-# 
-#name = params[:name]
-#email_address = params[:email_address]
-# time = Time.new
-# date = time.strftime("%Y-%m-%d")
-# 
-# db.exec("INSERT INTO manifesto (name,email_address,date) values ('#{name}','#{email_address}','#{date}')")
-# 
-# redirect ('/manifesto')
-#end
-#
-#get '/current_happenings' do
-# 
-# erb :current_happenings
-# 
-#end
-#
-#get '/404' do
-# 
-# erb :ohno
-# 
-#end
-#
-#not_found do
-#  redirect '/404'
-#end
-#
-#get '/new' do
-# 
-#erb :new
-#end
-#
-#get '/volunteer'do
-# 
-# thanks = params[:thanks] || ''
-#  num1 = rand(9)
-#  num2 = rand(9)
-#  sum = num1 + num2
-#  deliver = params[:deliver] || ''
-#  messages = {'' => '', 'success' => "Thank you for your message. We'll get back to you shortly.", 'error' => 'Sorry, there was a problem delivering your message.'}
-#  message = messages[deliver]
-# 
-#    erb :volunteer, :locals => {thanks: thanks, num1: num1, num2: num2, sum: sum, message: message }
-#end
-#
-#
-#
-#post '/volunteer' do
-# 
-#  num1 = rand(9)
-#  num2 = rand(9)
-#  sum = num1 + num2
-#
-# erb :volunteer, :locals => {thanks: thanks, num1: num1, num2: num2, sum: sum, message: message }
-# 
-#end
 
-<<<<<<< HEAD
 get '/manifesto'do
   signed = db.exec("SELECT * FROM manifesto")
    
@@ -264,6 +169,9 @@ end
 
 
 post '/volunteer' do
+
+
+  db.exec("INSERT INTO manifesto (name,email,date,phone ,reason) values ('#{name}','#{email}','#{date}',#{phone},#{reason})")
  # robot spammer protection
   num1 = rand(9)
   num2 = rand(9)
@@ -272,5 +180,3 @@ post '/volunteer' do
  erb :volunteer, :locals => {thanks: thanks, num1: num1, num2: num2, sum: sum, message: message }
  
 end
-=======
->>>>>>> 41e9efccb83498003dabe645cc14e72056646a9f
