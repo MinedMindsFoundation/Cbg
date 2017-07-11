@@ -265,3 +265,7 @@ figure.effect-zoe:hover p.icon-links a:first-child {
   background-position: center;
   background-repeat: no-repeat;
 }
+.fourboxstyle{
+    text-align:center;
+    font-weight:500;
+}
