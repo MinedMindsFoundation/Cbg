@@ -1,6 +1,6 @@
 <div class="container">
-<h2 style="text-align:center">Volunteer Today!</h2>
-        
+<h2 class="fontcenter">Volunteer Today!</h2>
+
 <form action="/volunteer" method="POST">
             <div class="row">
               <div class="col-md-7 col-sm-12">
@@ -26,8 +26,8 @@
                   <div class="control-group form-group">
                   <div class="controls">
                     <label>* Volunteer:</label>
-                    <select name="reason" style="width:100%" id='reason'>
-                       <option selected="" disabled="" style="display: none" value="">-Volunteer For-</option> 
+                    <select name="reason" class="selectcontact" id='reason'>
+                       <option selected="" disabled="" style="display: none" value="">-Volunteer For-</option>
                        <option value="Crime Watch">Crime Watch</option>
                        <option value="Casa">Casa (Court Appointed Special Advocates Association)</option>
                        <option value="General Coalition">General Coalition Building </option>
@@ -38,19 +38,19 @@
                  <div class="control-group form-group">
                   <label>* I'm not a robot! <%=num1%> + <%=num2%> =</label>
                   <input   type="number" class="form-control" name="robot" required = "true" >
-                  <input type="hidden" name="sum" value=<%=sum%>>  
+                  <input type="hidden" name="sum" value=<%=sum%>>
                 </div>
-              </div>        
+              </div>
               <div class="col-md-5 col-sm-12">
                 <div class="control-group form-group">
                   <div class="controls ">
                     <label>* Message:</label>
                     <textarea rows="13" cols="150" class="form-control message" id="message" name ="message" required = "true" ></textarea>
-                  </div> 
+                  </div>
                 </div>
-                <input type="submit" value="Submit" class="button">
+                <input type="submit" value="Submit" class="btn-primary contactsubmit">
 <!--                <input type="checkbox" name="mailinglist" value="add"> Add me to the mailing list-->
-              </div>        
-            </div> 
+              </div>
+            </div>
           </form>
 </div>

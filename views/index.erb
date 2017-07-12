@@ -1,24 +1,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <style type="text/css">
-    .col-centered {
-    float: none;
-    margin: 0 auto;
-}
 
-.full-screen {
-/*  background-size: cover;*/
-  background-position: center;
-  background-repeat: no-repeat;
-}
-</style>
 
 <div class="row">
 <div class="col-lg-12">
-  <img src="img/newgroup.jpg" width="100%" height="50%">
+  <img class="mainpageimg" src="img/newgroup.jpg">
   </div>
 </div>
 <br><br>
-<h3 style="text-align:center;color:red"><%=message%></h3>
+<h3 class="contactmessage"><%=message%></h3>
 
  <div class="col-lg-6">
   <div >
@@ -100,7 +89,7 @@
 <div class="row">
   <div class="col-lg-12">
    <hr>
-   <h2 style="text-align:center">Spotlight</h2>
+   <h2 class="fontcenter">Spotlight</h2>
    <p class="col-md-6 text-center  col-lg-offset-3">
     In our annual spotlight section we like to highlight a champion of recovery and to say thanks to a
     member of the community who has done something to help alleviate the issues surrounding the drug problem in Greene county.
@@ -161,15 +150,11 @@
             /*#endregion responsive code end*/
         };
     </script>
-    <style>
-     .logos {
-      padding-right:1rem
-     }
-</style>
-    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:250px;width:980px;height:100px;overflow:hidden;visibility:hidden;">
+
+    <div id="jssor_1" class="mainpagecar">
         <!-- Loading Screen -->
-        <div data-u="loading" style="position:absolute;top:0px;left:0px;background:url('img/loading.gif') no-repeat 50% 50%;background-color:rgba(0, 0, 0, 0.7);"></div>
-        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:100px;overflow:hidden;">
+        <div class="mainpageslides" data-u="loading"></div>
+        <div class="datauslides" data-u="slides">
             <div>
                 <img data-u="image" class="logos" src="img/firstbaptist.jpg" />
             </div>

@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Contact</h1>
-                <p style="text-align:center;color:red"><%=message%></p>
+                <p class="contactmessage"><%=message%></p>
 
                 <ol class="breadcrumb">
                     <li><a href="/">Home</a>
@@ -23,7 +23,7 @@
 
         <!-- Content Row -->
 
-          <h2 style="text-align:center">SEND A MESSAGE</h2>
+          <h2 class="fontcenter">SEND A MESSAGE</h2>
           <form action="/contact" method="POST">
             <div class="row">
               <div class="col-md-7 col-sm-12">
@@ -49,7 +49,7 @@
                   <div class="control-group form-group">
                   <div class="controls">
                     <label>* Reason for Contact:</label>
-                    <select name="reason" style="width:100%" id='reason'>
+                    <select name="reason" class="selectcontact" id='reason'>
                        <option selected="" disabled="" style="display: none" value="">-Reason for Contact-</option>
                        <option value="Volunteer">Volunteer</option>
                        <option value="Share Story">Share Story</option>
@@ -71,7 +71,7 @@
                     <textarea rows="13" cols="150" class="form-control message" id="message" name ="message" required = "true" ></textarea>
                   </div>
                 </div>
-                <input type="submit" value="Submit" class="button">
+                <input class="contactsubmit btn-primary" type="submit" value="Submit" class="button">
 <!--                <input type="checkbox" name="mailinglist" value="add"> Add me to the mailing list-->
               </div>
             </div>

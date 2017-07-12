@@ -98,7 +98,7 @@ end
 
 #get '/' do
 #
-# erb :commingsoon
+# erb :comingsoon
 #
 #end
 
@@ -159,10 +159,10 @@ not_found do
   redirect '/404'
 end
 
-get '/new' do
-
-erb :new
-end
+#get '/new' do
+#
+#erb :new
+#end
 
 get '/volunteer'do
 
