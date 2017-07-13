@@ -192,7 +192,7 @@ post '/volunteer' do
   time = Time.new#kernel for registering time of new signup
   date = time.strftime("%Y-%m-%d")#kernel for registering date
   robot = params[:robot]
-
+  messages = {'' => '', 'success' => "Thank you for your message. We'll get back to you shortly.", 'error' => 'Sorry, there was a problem delivering your message.'}
   if robot == sum #confirms human interaction
     Pony.mail(
         :to => "#{email}",
@@ -227,8 +227,8 @@ db = connection()
    #places data into database of new signup
 
 db.close
-        redirect '/contact?deliver=success'
+        redirect '/volunteer?deliver=success'
   else
-    redirect '/contact?deliver=error'#human interaction function part of
+    redirect '/volunteer?deliver=error'#human interaction function part of
   end
 end
