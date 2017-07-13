@@ -563,3 +563,24 @@ figure.effect-zoe:hover p.icon-links a:first-child {
     margin-left:1.5rem;
 }
 }
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus{
+    color:#ffffff!important;
+    background-color:#15a84e;
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+    color: #ffffff;
+}
+.dropdown-menu{
+    background-color:#15a84e;
+}
+.navbar-inverse .navbar-nav>.open>a:hover{
+    color:darkgray;
+}
+.newsarticles{
+    margin-top:2.0rem;
+}
+/*
+.fb-page{
+    margin-left:4.0rem;
+}
+*/
