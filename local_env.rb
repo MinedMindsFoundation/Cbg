@@ -4,5 +4,5 @@ ENV['dbname'] = "greenecoalition"
 ENV['user'] = 'MinedMinds'
 ENV['password'] = 'Min3dMinds'
 
-ENV['email']= 'joseph.mckenzie@minedminds.org'
-ENV['email_pass'] ='Bubbadog1907'
+ENV['email']= 'heather.shockney@minedminds.org'
+ENV['email_pass'] ='Sjs@3042764079'
