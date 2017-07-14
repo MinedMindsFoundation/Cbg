@@ -82,19 +82,7 @@ end
 get '/services'do
     erb :services
 end
-#
-#get '/pricing'do
-#    erb :pricing
-#end
-#
-#get '/documentation'do
-#    erb :documentation
-#end
-#
-#get'/blog'do
-#    erb :blog
-#end
-#
+
 
 #get '/' do
 #
@@ -104,8 +92,7 @@ end
 
 
 get '/support' do
-
- erb :support
+erb :support
 end
 
 post '/subscribe' do
@@ -126,10 +113,11 @@ end
 
 
 get '/manifesto'do
+
   db = connection()
   signed = db.exec("SELECT * FROM manifesto")
   db.close
- erb :manifesto, :locals => {signed: signed}
+ erb :manifesto, :locals => {signed: signed, message: " "}
 
 end
 
@@ -140,9 +128,17 @@ email_address = params[:email_address]
  time = Time.new
  date = time.strftime("%Y-%m-%d")
  db = connection()
+signed = db.exec("SELECT * FROM manifesto")
+check_signed = db.exec("SELECT email_address FROM manifesto WHERE email_address = '#{email_address}'")
+    if check_signed.num_tuples.zero? == false
+    db.close
+    erb :manifesto, :locals => {signed: signed, message: 'Already signed, thank you.'}
+  else
+
  db.exec("INSERT INTO manifesto (name,email_address,date) values ('#{name}','#{email_address}','#{date}')")
  db.close
- redirect ('/manifesto')
+ erb :manifesto, :locals => {signed: signed, message: 'Thanks for signing & making a commitment to keep Greene County drug free.'}
+    end
 end
 
 get '/current_happenings' do
