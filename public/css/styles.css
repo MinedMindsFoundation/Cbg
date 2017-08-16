@@ -317,7 +317,7 @@ figure.effect-zoe:hover p.icon-links a:first-child {
     color: #ffffff!important;
 }
 .reverse_floating_button{
-            background:#15a84e;
+            background:#1e7a47;
             border-radius:5px 5px 0px 0px;
             font-weight:normal;
             font-family:Arial, Helvetica, sans-serif;
@@ -350,7 +350,7 @@ figure.effect-zoe:hover p.icon-links a:first-child {
             overflow: auto;
 }
 .floating_button{
-             background:#377ab7;
+             background:#7c9da4;
              border-radius:5px 5px 0px 0px;
              font-weight:normal;
              font-family:Arial, Helvetica, sans-serif;
@@ -382,7 +382,7 @@ figure.effect-zoe:hover p.icon-links a:first-child {
              overflow: auto;
 }
 .reverse_floating_button2{
-             background:#15a84e;
+             background:#1e7a47;
              border-radius:5px 5px 0px 0px;
              font-weight:normal;
              font-family:Arial, Helvetica, sans-serif;
@@ -429,7 +429,58 @@ figure.effect-zoe:hover p.icon-links a:first-child {
         color: #1E2C79;
 }
 .navstyle{
-   background-color:#15a84e;
+   background-color:#1e7a47;
+}
+
+.row{
+    background-color: #ecf0f3;
+}
+.mrgrow{    
+    margin-left: 0px;
+    margin-right: -59px;
+}
+hr{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #1e7a47  
+}
+
+footer{
+    background-color: #1e7a47;
+    color: white;
+}
+
+footer a {  
+    color: white;
+}
+
+footer a:hover {
+color: #7c9da4;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #7c9da4;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #4a676d;
+}
+
+.panel-default > .panel-heading {
+  color: #333;
+  background-color: #ecf0f3;
+  border-color: #ddd;
+}
+a{color:#1e7a47;text-decoration:none}
+a:hover{color: #4a676d;}
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #ecf0f3;
+    border-radius: 4px;
 }
 /*
 .row {
@@ -565,13 +616,20 @@ figure.effect-zoe:hover p.icon-links a:first-child {
 }
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus{
     color:#ffffff!important;
-    background-color:#15a84e;
+    background-color:#1e7a47;
 }
 .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
     color: #ffffff;
 }
 .dropdown-menu{
-    background-color:#15a84e;
+    background-color:#1e7a47;
+}
+
+.dropdown-menu ul li a{
+    background-color: black;
+}
+.dropdown-menu ul li a:hover{
+    background-color: green;
 }
 .navbar-inverse .navbar-nav>.open>a:hover{
     color:darkgray;
@@ -584,3 +642,6 @@ figure.effect-zoe:hover p.icon-links a:first-child {
     margin-left:4.0rem;
 }
 */
+.bkcolor {
+    background-color: #ecf0f3; 
+}

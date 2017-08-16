@@ -1147,7 +1147,7 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #1e7a47;
 }
 .sr-only {
   position: absolute;
@@ -3115,8 +3115,7 @@ fieldset[disabled] .btn-default.focus {
 }
 .btn-primary {
   color: #fff;
-  background-color: #337ab7;
-  border-color: #2e6da4;
+  background-color: #7c9da4;
 }
 .btn-primary:focus,
 .btn-primary.focus {
@@ -3127,7 +3126,6 @@ fieldset[disabled] .btn-default.focus {
 .btn-primary:hover {
   color: #fff;
   background-color: #286090;
-  border-color: #204d74;
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -5694,7 +5692,7 @@ button.list-group-item-danger.active:focus {
 }
 .panel-default > .panel-heading {
   color: #333;
-  background-color: #f5f5f5;
+  background-color: #ecf0f3;
   border-color: #ddd;
 }
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
