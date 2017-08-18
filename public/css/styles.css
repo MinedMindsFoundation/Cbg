@@ -4,7 +4,6 @@
     background-color: #7c9da4;
 }
 
-
 .manifesto {
 /* text-align:center;*/
     margin-left: 35rem;
@@ -17,7 +16,6 @@
  border-style:solid;
  border-color:gainsboro;
 }
-
 
 .floating_button{
   display: block; margin-top: 0px; margin-left: 0px; width:auto ; height: auto;
