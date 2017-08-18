@@ -1,3 +1,10 @@
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+    color: #262626;
+    text-decoration: none;
+    background-color: #7c9da4;
+}
+
+
 .manifesto {
 /* text-align:center;*/
     margin-left: 35rem;
