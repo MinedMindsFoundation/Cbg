@@ -51,7 +51,8 @@ sum = params[:sum]
     Pony.mail(
         :to => "#{email}",
         :cc => 'info@coalitionforabrightergreene.org',
-        :from => 'joseph@minedminds.org',
+        :bcc => 'greenecocoalition@gmail.com',
+        :from => 'info@coalitionforabrightergreene.org',
         :subject => "CBG",
         :content_type => 'text/html',
         :body => erb(:email2,:layout=>false),
@@ -192,9 +193,9 @@ post '/volunteer' do
   if robot == sum #confirms human interaction
     Pony.mail(
         :to => "#{email}",
-        :cc =>'shockney@atlanticbb.net',
-#        :cc => 'info@coalitionforabrightergreene.org',
-        :from => 'heather.shockney@minedminds.org',
+        :cc => 'info@coalitionforabrightergreene.org',
+        :bcc => 'greenecocoalition@gmail.com',
+        :from => 'info@coalitionforabrightergreene.org',
         :subject => "CBG",
         :content_type => 'text/html',
         :body => erb(:email2,:layout=>false),
