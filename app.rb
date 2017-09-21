@@ -229,3 +229,10 @@ db.close
     redirect '/volunteer?deliver=error'#human interaction function part of
   end
 end
+
+get '/admin' do
+ 
+erb :admin
+ 
+end
+

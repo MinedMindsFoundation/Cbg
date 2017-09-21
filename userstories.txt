@@ -1,0 +1,13 @@
+As a ADMIN I would like to change current Spotlight section photo
+
+As a ADMIN I would like to change current Spotlight section bio/info text
+
+As a ADMIN I would like to view current list of people that have signed manifesto
+
+As a ADMIN I would like to print current list of people w/ all data associated that have signed manifesto
+
+AS a ADMIN i want to make changes to calander and add or make updates to events
+
+As a ADMIN I want to add new news article links
+
+
