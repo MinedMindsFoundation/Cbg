@@ -1,8 +1,17 @@
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 <style>
 
- 
+.content {
+    width: 400px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.content img {
+    margin-right: 15px;
+    float: left;
+}
 
 img.logos {
   width:75px !important;
@@ -10,15 +19,38 @@ img.logos {
  }
  
 </style>
+<script type="text/javascript">
+ $(window).load(function(){
+  $('#myModal').modal('show');
+ });
+</script>
 <div class="row">
-<div class="col-lg-12">
+ <div class="col-lg-12">
   <img class="mainpageimg" src="img/newgroup.jpg">
-  </div>
+ </div>
 </div>
 <br><br>
-<h3 class="contactmessage"><%=message%></h3>
-    <div class="container">
-
+ <h3 class="contactmessage"><%=message%></h3>
+ <div class="container">
+  <div id="myModal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+  <!-- Modal content-->
+    <div class="modal-content">
+     <div class="modal-body">
+      <button type="button" class="btn btn-default pull-right" data-dismiss="modal" >X</button>
+      <div class="content" style="width:100%">
+       <img src="/img/townhall2017yardsign-1.jpg" style="width:50%" alt="" >
+       <h5><b>The Coalition for a Brighter Greene</b></h5>   
+       <br>   
+       <p>The Coalition for a Brighter Greene would like to invite you to the Coalition's Public Drug Forum. The Forum will be held on October 18, 2017 in St. Hughes Social Hall. The program will begin at 6:00pm</p>
+      </div>
+     </div>
+      <div class="modal-footer">
+       <button type="button" class="btn btn-default" ><a href="https://calendar.google.com/calendar/render?eid=NjVwZmcwYWIzOWs2MjlmOWNtbnAycGQ0ODIgZ3JlZW5lY29jb2FsaXRpb25AbQ&ctz=America/New_York&sf=true&output=xml#eventpage_6" target="_blank">Find out more</a></button> 
+      </div>
+    </div>
+  </div>
+</div>
  <div class="col-lg-6">
   <br>
   <div >
