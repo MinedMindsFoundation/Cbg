@@ -19,7 +19,11 @@ get '/' do
 
 message = params[:message] || ''
   messages = {'' => '', 'added' => 'Thanks, for joining our mailing list.', 'exists' => 'You have already joined our mailing list'}
-    erb :index, :locals => {:message => messages[message]}
+  db = connection() 
+  spotlight_show = db.exec("select * from public.spotlight")
+ 
+ 
+    erb :index, :locals => {:message => messages[message],:spotlight_show => spotlight_show}
 end
 
 

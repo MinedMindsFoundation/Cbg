@@ -2,10 +2,26 @@
  <div class="row">
   <div class="col-lg-12">
    <div class="">
-   <h3>Admin Settings</h3>
+   <h2>Admin Settings</h2>
    </div>
-   <h5><input type="image" name = "spotlight-picture"> </h5>
-  
+   <br><br>
+   <div>
+   <h4>Spotlight Section </h4>
+ 
+   
+   <form action="/spotlight-update" method="post" id="spotlight">
+ Spotlight Photo: <input type="text" name="spotlight-photo" placeholder="Enter Facebook URL">
+    <br>
+    
+   Spotlight Bio:
+    <br>
+    <textarea form="spotlight" name="spotlight-text" rows="4" cols="30">Enter text here...</textarea>
+<br>
+  <input type="submit">
+</form>
+
+   </div>
+   <hr>
   </div>
  </div>
 </div>
