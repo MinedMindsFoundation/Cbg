@@ -256,7 +256,7 @@ post '/spotlight_update' do
  start_date = params[:start_date]
  db = connection()
 
- spotlight_update = db.exec("INSERT INTO public.spotlight (facebook_url, individual_or_organization_name, bio, start_date,actual_names) VALUES('#{spotlight_photo}', '#{actual_names}', '#{individual_or_organization_name}', '#{bio}', '#{start_date}'); ")
+ spotlight_update = db.exec("INSERT INTO public.spotlight (spotlight_photo, actual_names, individual_or_organization_name, bio,start_date) VALUES('#{spotlight_photo}', '#{actual_names}', '#{individual_or_organization_name}', '#{bio}', '#{start_date}'); ")
  
  redirect to '/admin'
 end
