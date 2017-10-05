@@ -21,9 +21,12 @@ message = params[:message] || ''
   messages = {'' => '', 'added' => 'Thanks, for joining our mailing list.', 'exists' => 'You have already joined our mailing list'}
   db = connection() 
   spotlight_show = db.exec("select * from public.spotlight")
- 
- 
-    erb :index, :locals => {:message => messages[message],:spotlight_show => spotlight_show}
+ db.close
+   db = connection() 
+
+  sponsor_logos = db.exec("SELECT * from public.sponsors")
+ db.close
+    erb :index, :locals => {:message => messages[message],:spotlight_show => spotlight_show, :sponsor_logos => sponsor_logos}
 end
 
 
@@ -235,8 +238,36 @@ db.close
 end
 
 get '/admin' do
- 
-erb :admin
+  db = connection() 
+  spotlight_show = db.exec("select * from public.spotlight")
+  db.close
+  db = connection()
+  sponsor_logos = db.exec("select * from public.sponsors")
+ db.close
+erb :admin, :locals => {:spotlight_show => spotlight_show, :sponsor_logos => sponsor_logos }
  
 end
 
+post '/spotlight_update' do
+ spotlight_photo = params[:spotlight_photo]
+ actual_names = params[:actual_names]
+ individual_or_organization_name = params[:individual_or_organization_name]
+ bio = params[:bio]
+ start_date = params[:start_date]
+ db = connection()
+
+ spotlight_update = db.exec("INSERT INTO public.spotlight (facebook_url, individual_or_organization_name, bio, start_date,actual_names) VALUES('#{spotlight_photo}', '#{actual_names}', '#{individual_or_organization_name}', '#{bio}', '#{start_date}'); ")
+ 
+ redirect to '/admin'
+end
+
+post '/sponsor_update' do
+
+ sponsor_name = params[:sponsor_name]
+ sponsor_logo = params[:sponsor_logo]
+ 
+ db = connection()
+ sponsor_update = db.exec("INSERT INTO public.sponsors (sponsor_name,sponsor_logo) VALUES ('#{sponsor_name}','#{sponsor_logo}')")
+ 
+ redirect to '/admin'
+end

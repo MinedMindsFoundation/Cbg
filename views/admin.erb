@@ -1,27 +1,67 @@
 <div class="container">
- <div class="row">
+ <div class="row"> 
   <div class="col-lg-12">
    <div class="">
-   <h2>Admin Settings</h2>
+    <h2 style="text-align:center">Admin Settings</h2>
    </div>
    <br><br>
    <div>
-   <h4>Spotlight Section </h4>
- 
-   
-   <form action="/spotlight-update" method="post" id="spotlight">
- Spotlight Photo: <input type="text" name="spotlight-photo" placeholder="Enter Facebook URL">
-    <br>
-    
-   Spotlight Bio:
-    <br>
-    <textarea form="spotlight" name="spotlight-text" rows="4" cols="30">Enter text here...</textarea>
-<br>
-  <input type="submit">
-</form>
-
+<!--   <h4>Spotlight Section </h4>-->
+    <form action="/spotlight_update" method="post" id="spotlight">
+     <h4 style="text-align:center">Spotlight Section</h4>
+     <div class="row bkclor col-lg-6 col-lg-offset-3"> 
+      <h5 class="fontcenter">Current Spotlight</h5>
+      <div class="thumbnail text-center">
+       <img class="img-responsive" src="img/eagles.jpg" style="width: 275px;height: 350px;" alt="">
+       <div class="caption">
+        <h3><%=spotlight_show[0]["actual_names"]%></h3>
+        <h4><%=spotlight_show[0]["individual_or_organization name"]%></h4>
+        <p><%=spotlight_show[0]["bio"]%>
+        <p>*** Start Date: <%=spotlight_show[0]['start_date']%> ***</p>
+       </div>
+      </div>
+      <h3 style="text-align:center">Spotlight Update</h3>
+      <br>
+      Spotlight Photo: <input type="text" name="spotlight_photo" placeholder="Enter Facebook URL">
+      <br>
+      Person(s) Name: <input type="text" name="actual_names" placeholder="Enter Name">
+      <br>
+      Organization Name: <input type="text" name="individual_or_organization_name" placeholder="Enter Name">
+      <br>
+      Start Date : <input type="text" name="start_date" placeholder="YYYY-MM-DD">
+      <br>
+      Spotlight Bio:
+      <br>
+      <textarea form="spotlight" name="bio" rows="4" cols="30">Enter text here...</textarea>
+      <br>
+      <input type="submit">
+     </div>
+    </form>
    </div>
-   <hr>
+  </div>
+ </div>
+ <hr>
+     <div class="row bkclor col-lg-12"> 
+  <h4 style="text-align:center">Sponsor Section</h4>
+  <h5 style="text-align:center">Current Sponsors</h5>
+  <%sponsor_logos.each do |logo| %>
+  <p>
+   Name: <%=logo['sponsor_name']%>
+   <br>
+   Logo Url: <%=logo['sponsor_logo']%>
+   <br>
+   Logo: <img src ="<%=logo["sponsor_logo"]%>" style="width:75px">
+  </p>
+  <%end%>
+  <div style="text-align:center">
+   <form action="/sponsor_update" method="post">
+    <h4 style="text-align:center">Add Sponsor</h4>
+    Sponsor Name: <input type="text" name="sponsor_name" placeholder="Enter Sponsor Name" >
+    <br>
+    Sponsor Logo: <input type="text" name="sponsor_logo" placeholder="Enter Facebook Url">
+    <br>
+    <input type="submit">
+   </form>
   </div>
  </div>
 </div>

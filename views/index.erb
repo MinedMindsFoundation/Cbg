@@ -149,7 +149,7 @@ img.logos {
    </p>
   <div class="col-lg-8 col-lg-offset-2 spotlightstyle">
    <div class="thumbnail text-center">
-    <img class="img-responsive" src="img/eagles.jpg" style="width: 275px;height: 350px;" alt="">
+    <img class="img-responsive" src="<%=spotlight_show[0]["facebook_url"]%>" style="width: 275px;height: 350px;" alt="">
     <div class="caption">
      <h3><%=spotlight_show[0]["actual_names"]%></h3>
      <h4><%=spotlight_show[0]["individual_or_organization name"]%></h4>
@@ -204,27 +204,12 @@ img.logos {
         <!-- Loading Screen -->
         <div class="mainpageslides" data-u="loading"></div>
         <div class="datauslides" data-u="slides">
-            <div class="logos">
-                <img data-u="image" class="logos" src="img/firstbaptist.jpg" w />
+           <%sponsor_logos.each do |logos| %>
+         
+         <div class="logos">
+                <img data-u="image" class="logos" src="<%=logos["logo_url"]%>" alt="<%=logos["name"]%>" />
             </div>
-            <div class="logos">
-                <img data-u="image" class="logos" src="img/chevronhallmark.jpg" />
-            </div>
-            <div class="logos">
-                <img data-u="image" class="logos" src="img/jesmarlogoreversed.jpg" />
-            </div>
-            <div class="logos">
-                <img data-u="image" class="logos" src="img/cfgclogo.jpg" />
-            </div>
-            <div class="logos">
-               <img data-u="image" class="logos" src="img/bailyinsurance.png"/> 
-           </div>
-           <div class="logos">
-               <img data-u="image" class="logos" src="img/rotary.png"/> 
-           </div>
-
-
-
+         <%end%>
 
             <a data-u="any" href="https://wordpress.org/plugins/jssor-slider/" style="display:none">wordpress slider</a>
         </div>
