@@ -4,6 +4,8 @@ require 'pony'
 #gems sinatra for structure pg for database pony for mail
 load './local_env.rb' if File.exist?('./local_env.rb')
 
+enable :sessions
+
 def connection()
   db_params = {
     host: ENV['host'],
@@ -13,6 +15,10 @@ def connection()
     password: ENV['password']
   }
   db = PG::Connection.new(db_params) #sets connection with db
+end
+
+def authentication_required
+  redirect to('/login') unless session[:user]
 end
 
 get '/' do
@@ -238,6 +244,7 @@ db.close
 end
 
 get '/admin' do
+ authentication_required
   db = connection() 
   spotlight_show = db.exec("select * from public.spotlight")
   db.close
@@ -270,4 +277,25 @@ post '/sponsor_update' do
  sponsor_update = db.exec("INSERT INTO public.sponsors (sponsor_name,sponsor_logo) VALUES ('#{sponsor_name}','#{sponsor_logo}')")
  
  redirect to '/admin'
+end
+
+get '/login' do
+  erb :login, :locals => {:message => ""}
+end
+
+post '/login' do
+  user = params[:user]
+  pass = params[:password]
+  
+  if user == ENV['login_username'] && pass == ENV['login_password']
+    session[:user] = user
+    redirect to '/admin'
+  else  
+    erb :login, :locals => {:message => "invalid username / password combination"}
+  end
+end
+
+get '/logout' do
+ session[:user] = nil
+ redirect '/'
 end
