@@ -149,7 +149,7 @@ img.logos {
    </p>
   <div class="col-lg-8 col-lg-offset-2 spotlightstyle">
    <div class="thumbnail text-center">
-    <img class="img-responsive" src="<%=spotlight_show[0]["facebook_url"]%>" style="width: 275px;height: 350px;" alt="">
+    <img class="img-responsive" src="<%=spotlight_show[0]["spotlight_photo"]%>" style="width: 275px;height: 350px;" alt="">
     <div class="caption">
      <h3><%=spotlight_show[0]["actual_names"]%></h3>
      <h4><%=spotlight_show[0]["individual_or_organization name"]%></h4>
@@ -207,7 +207,7 @@ img.logos {
            <%sponsor_logos.each do |logos| %>
          
          <div class="logos">
-                <img data-u="image" class="logos" src="<%=logos["logo_url"]%>" alt="<%=logos["name"]%>" />
+                <img data-u="image" class="logos" src="<%=logos["sponsor_logo"]%>" alt="<%=logos["sponsor_name"]%>" />
             </div>
          <%end%>
 
