@@ -157,7 +157,11 @@ end
 
 get '/current_happenings' do
 
- erb :current_happenings
+db = connection()
+ string = "select to_char(article_date,'TMMonth, TMYYYY')as article_month, article_link,article_name from public.news_articles group by article_date,article_link,article_name order by article_date,article_link,article_name"
+ news_articles = db.exec("#{string}")
+
+ erb :current_happenings, :locals => {:news_articles => news_articles}
 
 end
 
@@ -251,7 +255,11 @@ get '/admin' do
   db = connection()
   sponsor_logos = db.exec("select * from public.sponsors")
  db.close
-erb :admin, :locals => {:spotlight_show => spotlight_show, :sponsor_logos => sponsor_logos }
+   db = connection()
+
+ manifesto_signers = db.exec('SELECT "name", email_address, "date" FROM public.manifesto;')
+ db.close
+erb :admin, :locals => {:spotlight_show => spotlight_show, :sponsor_logos => sponsor_logos, :manifesto_signers => manifesto_signers }
  
 end
 
@@ -278,6 +286,38 @@ post '/sponsor_update' do
  
  redirect to '/admin'
 end
+
+post '/news_update' do
+ article_link = params[:article_link]
+ article_name = params[:article_name]
+ article_date_month = params[:article_date_month]
+ article_date_day = params[:article_date_day]
+ article_date_year = params[:article_date_year]
+ article_partial_date = params[:article_date_year] + "-" + params[:article_date_month]
+ article_whole_date = params[:article_date_year] + "-" + params[:article_date_month] + "-" + params[:article_date_day]
+ db = connection()
+ article_links = [] || article_links
+ article_names = [] || article_names
+# index = 0 || index
+ existing_articles_check = db.exec("select to_char(article_date,'yyyy mm')as article_date,article_link,article_name from public.news_articles where article_date >= '#{article_partial_date}-01 ' and article_date < '#{article_partial_date}-31' ")
+  
+ existing_articles_check[0]["article_link"].gsub(/(\[\"|\"\])/, '').split('", "').each do  |link|
+  article_links.push(link)
+ end
+ article_links.push(article_link) 
+
+ existing_articles_check[0]["article_name"].gsub(/(\[\"|\"\])/, '').split('", "').each do  |link|
+  article_names.push(link)
+ end
+ article_names.push(article_name) 
+
+ update = db.exec("UPDATE public.news_articles SET article_link='#{article_links}', article_date='#{article_whole_date}', article_name='#{article_names}' where article_date >= '#{article_partial_date}-01 ' and article_date < '#{article_partial_date}-31';")
+ 
+ 
+redirect to '/admin'
+end
+
+
 
 get '/login' do
   erb :login, :locals => {:message => ""}

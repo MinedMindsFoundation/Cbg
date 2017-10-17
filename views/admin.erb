@@ -69,5 +69,80 @@
    </form>
   </div>
  </div>
+      <div class="row" style="background-color:white">
+ 
+   <div class="col-lg-12">
+   
+ 
+<!--   <h4>Spotlight Section </h4>-->
+    <form action="/news_update" method="post" id="spotlight">
+<br>
+     <div class="row bkclor col-lg-12"> 
+      
+      <h3 style="text-align:center">News Articles Update</h3>
+      <br>
+      Article Link: <input type="text" name="article_link" placeholder="Enter News Article Link">
+      <br>
+      Article Name: <input type="text" name="article_name" placeholder="Enter an Article Name">
+      <br>
+      Article Date Month : <input type="text" name="article_date_month" placeholder="MM">
+      Article Date Day : <input type="text" name="article_date_day" placeholder="DD">
+      Article Date Year : <input type="text" name="article_date_year" placeholder="YYYY">
+
+      <br>
+      <input type="submit">
+     </div>
+    </form>
+   </div>
+  </div>
+ <hr>
+  <script language="javascript" type="text/javascript">
+        function printDiv(divID) {
+            //Get the HTML of div
+            var divElements = document.getElementById(divID).innerHTML;
+            //Get the HTML of whole page
+            var oldPage = document.body.innerHTML;
+
+            //Reset the page's HTML with div's HTML only
+            document.body.innerHTML = 
+              "<html><head><title></title></head><body>" + 
+              divElements + "</body>";
+
+            //Print Page
+            window.print();
+
+            //Restore orignal HTML
+            document.body.innerHTML = oldPage;
+
+          
+        }
+    </script>
+
+   <div class="row" style="background-color:white">
+ 
+   <div class="col-lg-12">
+   
+ 
+    <form action="/" method="post" id="">
+
+     <div class="row  col-lg-12" id="manifesto"> 
+      <br>
+          <input type="button" value="Print" onclick="javascript:printDiv('manifesto')" class="pull-right" />
+
+      <h3 style="text-align:center">Current List of Manifesto Signers</h3>
+    <br>      <div style="text-align:center">
+
+      <%manifesto_signers.each do |signers|%>
+      <b>Name:</b><%=signers["name"]%>  <b>Email:</b><%=signers["email_address"]%>  <b>Date Signed:</b><%=signers["date"]%><br>
+      <%end%>
+           </div>
+
+     </div>
+
+    </form>
+   </div>
+  </div>
+ 
+ 
 </div>
 
