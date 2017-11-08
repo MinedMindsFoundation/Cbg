@@ -234,7 +234,6 @@ post '/sponsor_update' do
 	sponsor_logo = params[:sponsor_logo]
 	db = connection()
 	sponsor_update = db.exec("INSERT INTO public.sponsors (sponsor_name,sponsor_logo) VALUES ('#{sponsor_name}','#{sponsor_logo}')")
-	db.close
 	redirect to '/admin'
 end
 
