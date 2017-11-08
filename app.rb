@@ -283,8 +283,7 @@ post '/request_access' do
 		encrypted_email = BCrypt::Password.create(email)
 		email_body = ENV['domain'] + '/create_admin?fname=' + fname + '&lname=' + lname + '&email=' + email + '&id=' + encrypted_email
 		Pony.mail(
-			:to => "#{email}",
-			:cc => 'info@coalitionforabrightergreene.org',
+			:to => 'info@coalitionforabrightergreene.org',
 			:bcc => 'greenecocoalition@gmail.com',
 			:from => 'info@coalitionforabrightergreene.org',
 			:subject => "'#{fname}  '#{lname}' is requesting admin access ",
