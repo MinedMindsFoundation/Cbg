@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    bcrypt (3.1.11)
+    bcrypt (3.1.11-x64-mingw32)
     mail (2.6.6)
       mime-types (>= 1.16, < 4)
     mime-types (3.1)
@@ -26,6 +28,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  bcrypt
   pg
   pony
   sinatra
@@ -34,4 +37,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.15.1
+   1.15.4
