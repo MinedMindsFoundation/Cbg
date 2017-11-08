@@ -209,8 +209,10 @@ get '/admin' do
 	db = connection() 
 	spotlight_show = db.exec("select * from public.spotlight")
 	db.close
+	db = connection() 
 	sponsor_logos = db.exec("select * from public.sponsors")
 	db.close
+	db = connection() 
 	manifesto_signers = db.exec('SELECT "name", email_address, "date" FROM public.manifesto;')
 	db.close
 	erb :admin, :locals => {:spotlight_show => spotlight_show, :sponsor_logos => sponsor_logos, :manifesto_signers => 	manifesto_signers }
@@ -232,6 +234,7 @@ post '/sponsor_update' do
 	sponsor_logo = params[:sponsor_logo]
 	db = connection()
 	sponsor_update = db.exec("INSERT INTO public.sponsors (sponsor_name,sponsor_logo) VALUES ('#{sponsor_name}','#{sponsor_logo}')")
+	db.close
 	redirect to '/admin'
 end
 
