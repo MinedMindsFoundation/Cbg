@@ -1,12 +1,17 @@
 <div class="container">
 	<div class="wrapper" style="padding-top:5rem;padding-bottom:35.5rem">
 		<form class="login wrapper" action="login" method="post">
+			<%=adminadded%><br>
+			<%=email_exists%><br>
+			<br>
 			<label for="user">User Name</label>
-		    <input type="text" name="user">
+		    <input type="text" name="form_email">
 		    <label for="password">Password</label>
-		    <input type="password" name="password">
-		    <input type="submit" value="submit">
+		    <input type="password" name="form_password">
+		    <input type="submit" value="submit"><br><br>
+		<a href="/forgot_password">Forgot Password</a>	<a href="/request_access">Request Admin Access</a>
 		    <p id="flash" style="color:red"><%=message%></p>
+			<p id="flash" style="color:red"><%=invalid%></p>
 		</form>
 	</div>
 </div>

@@ -1,0 +1,57 @@
+  <div class="top-content">
+    <div class="inner-bg">
+      <div class="container">
+        <header class="company-header">
+          <h1>Coalition for a Brighter Greene</h1>
+        </header>
+      </div>
+			<%=alreadyexists%>
+              
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 form-box">
+          <div class="form-top">
+              <div class="form-top-left">
+                <h3>Request Admin Access</h3>
+                  <p>Please fill out all necessary fields below:</p>
+              </div>
+          </div>
+
+          <div class="form-bottom">
+            <form action="/request_access" method="post" class="login-form">
+              <div class="form-group">
+                <label class="hidden-xs">First Name *</label>
+                <input id="inputfName" type="text" name="fname" class="form-control" autofocus="autofocus" required="required">
+              </div>
+
+              <div class="form-group">
+                <label for="inputlName"class="hidden-xs">Last Name *</label>
+                <input id="inputlName" type="text" name="lname" class="form-control" required="required" >
+              </div>
+
+            
+              <div class="form-group">
+                <label for="inputEmail" class="hidden-xs">Email *</label>
+                <input id="inputEmail" type="text" name="email" class="form-control" required="required" placeholder="Email">
+              </div>
+
+         
+
+<!--
+              <div class="form-group">
+                <label for="inputPassword" class="hidden-xs">Password *</label>
+                <input id="inputPassword" type="password" name="password" class="form-control" required="required" placeholder="Password">
+              </div>
+
+              <div class="form-group">
+                <label for="confirmPassword" class="hidden-xs">Confirm Password *</label>
+                <input id="confirmPassword" type="password" name="confirmPassword" class="form-control" required="required" placeholder="Confirm Password">
+              </div>
+-->
+
+              <button type="submit" class="btn">Request Access!</button>
+            </form>
+          </div>                  
+        </div>
+      </div>
+    </div>
+  </div

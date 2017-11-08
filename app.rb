@@ -1,6 +1,8 @@
 require 'sinatra'
 require 'pg'
 require 'pony'
+require 'mail'
+require 'bcrypt'
 #gems sinatra for structure pg for database pony for mail
 load './local_env.rb' if File.exist?('./local_env.rb')
 
@@ -320,22 +322,244 @@ end
 
 
 get '/login' do
-  erb :login, :locals => {:message => ""}
+	  invalid = params[:invalid] || ''
+    adminadded = params[:adminadded] || ''
+	email_exists = params[:email_exists] || ''
+  erb :login, :locals => {:message => "", :invalid => invalid, :adminadded => adminadded, :email_exists => email_exists}
 end
 
-post '/login' do
-  user = params[:user]
-  pass = params[:password]
-  
-  if user == ENV['login_username'] && pass == ENV['login_password']
-    session[:user] = user
-    redirect to '/admin'
-  else  
-    erb :login, :locals => {:message => "invalid username / password combination"}
-  end
+#post '/login' do
+#  user = params[:user]
+#  pass = params[:password]
+#  
+#  if user == ENV['login_username'] && pass == ENV['login_password']
+#    session[:user] = user
+#    redirect to '/admin'
+#  else  
+#    erb :login, :locals => {:message => "invalid username / password combination"}
+#  end
+#end
+
+get '/request_access' do
+	
+	alreadyexists = params[:alreadyexists]
+	
+	erb :register, :locals => {:alreadyexists => alreadyexists}
+	
 end
+
+
+
+
+post '/request_access' do
+  
+ fname = params[:fname].gsub(" ", "%20")
+  lname = params[:lname]
+  email = params[:email]
+	db = connection()
+  sql1 = "SELECT email FROM admin_users WHERE email = '#{email}'"
+  email_check = db.exec(sql1)
+  
+  if email_check.num_tuples.zero?
+  
+		
+#		 encrypted_email = BCrypt::Password.create(email)
+#		
+#  email_body = ENV['domain'] + '/reset_password?id=' + encrypted_email + '&email=' + email
+#		
+  encrypted_email = BCrypt::Password.create(email)
+		
+  email_body = ENV['domain'] + '/create_admin?fname=' + fname + '&lname=' + lname + '&email=' + email + '&id=' + encrypted_email
+		
+		
+		Pony.mail(
+        :to => "#{email}",
+        :cc => 'info@coalitionforabrightergreene.org',
+        :bcc => 'greenecocoalition@gmail.com',
+        :from => 'info@coalitionforabrightergreene.org',
+        :subject => "'#{fname}  '#{lname}' is requesting admin access ",
+        :content_type => 'text/html',
+        :body => "#{email_body}",
+        :via => :smtp,
+        :via_options => {
+          :address              => 'smtp.gmail.com',
+          :port                 => '587',
+          :enable_starttls_auto => true,
+           :user_name           => ENV['email'],
+           :password            => ENV['email_pass'],
+           :authentication       => :plain,
+           :domain               => 'localhost:4567'
+        }#mails and loads sender info
+
+      )
+		
+		redirect '/request_access?alreadyexists=Your request has been sent and you will be notified if you are approved?'
+
+		
+	else
+		redirect '/request_access?alreadyexists=You are already in our system, prehaps you want to reset your password?'
+
+end
+  db.close
+end
+
+
+
+get '/create_admin' do
+  fname = params[:fname].gsub(" ", "%20")
+  lname = params[:lname]
+  email = params[:email]
+	id = params[:id]
+  password = 'changeme'
+  db = connection()
+  encrypted_password = BCrypt::Password.create(password)
+  sql1 = "SELECT email FROM admin_users WHERE email = '#{email}'"
+  sql2 = "INSERT INTO admin_users (first_name, last_name,email, password) VALUES ('#{fname}','#{lname}','#{email}', '#{encrypted_password}')"
+  email_check = db.exec(sql1)
+
+  
+	id = params[:id]
+	begin
+		encrypted_email = BCrypt::Password.new(id)
+	rescue BCrypt::Errors::InvalidHash
+		redirect '/?message=invalid'
+	end 
+	if encrypted_email == email
+	
+		if email_check.num_tuples.zero?
+    db.exec(sql2)
+    redirect '/login?adminadded=Admin User Created'
+  else
+    redirect '/login?email_exists=Email already exists' + '&email=' + email
+  end		
+		
+		
+		erb :reset_password, :locals => {:name => "",:survey => "",:email=> email, :message => ""}
+	else
+		redirect '/?message=invalid'
+	end
+
+	
+db.close
+end
+
+
+post '/login' do
+    user_email = params[:form_email]
+    user_password = params[:form_password]
+	db = connection()
+    sql = "SELECT email, password FROM admin_users WHERE email = '#{user_email}'"
+    user = db.exec(sql)
+	
+	if user.num_tuples.zero?
+    redirect '/login?invalid=Invalid Email or Password'
+  end
+
+	begin
+        db_pass = user[0]['password']
+        pass = BCrypt::Password.new(db_pass)
+    rescue BCrypt::Errors::InvalidHash
+        redirect '/login?invalid=Invalid Email or Password'
+	end 
+	
+
+    db_pass = user[0]['password']
+    pass = BCrypt::Password.new(db_pass)
+
+  if pass != user_password
+    redirect '/login?invalid=Invalid Email or Password'
+  else
+session[:user] = user_email
+    redirect to '/admin'
+  db.close
+end
+end
+
+
+
+
+
+
+
+
 
 get '/logout' do
  session[:user] = nil
  redirect '/'
+end
+
+get '/forgot_password' do
+  email = params[:email]
+  message = params[:message] || ''
+  erb :forgot_password, :locals => {:name => "Login",:survey => "",:email => email, :invalid => "", :message => message}
+end
+
+
+post '/forgot_password' do
+  
+  email = params[:email]
+  db = connection()
+  sql1 = "SELECT email FROM admin_users WHERE email = '#{email}'"
+  email_check = db.exec(sql1)
+  
+  if email_check.num_tuples.zero?
+    redirect 'forgot_password?message=Sorry+that+email+does+not+exist+in+our+database.'
+  else
+  encrypted_email = BCrypt::Password.create(email)
+		
+  email_body = ENV['domain'] + '/reset_password?id=' + encrypted_email + '&email=' + email
+		
+		
+		Pony.mail(
+        :to => "#{email}",
+        :cc => 'info@coalitionforabrightergreene.org',
+        :bcc => 'greenecocoalition@gmail.com',
+        :from => 'info@coalitionforabrightergreene.org',
+        :subject => "Password reset link for Coalition for a Brighter Greene Admin",
+        :content_type => 'text/html',
+        :body => "#{email_body}",
+        :via => :smtp,
+        :via_options => {
+          :address              => 'smtp.gmail.com',
+          :port                 => '587',
+          :enable_starttls_auto => true,
+           :user_name           => ENV['email'],
+           :password            => ENV['email_pass'],
+           :authentication       => :plain,
+           :domain               => 'localhost:4567'
+        }#mails and loads sender info
+
+      )
+		
+redirect '/?email=' + email + '&message=reset'
+end
+  db.close
+end
+
+get '/reset_password' do
+email = params[:email]
+id = params[:id]
+	begin
+		encrypted_email = BCrypt::Password.new(id)
+	rescue BCrypt::Errors::InvalidHash
+		redirect '/?message=invalid'
+	end 
+	if encrypted_email == email
+		erb :reset_password, :locals => {:name => "",:survey => "",:email=> email, :message => ""}
+	else
+		redirect '/?message=invalid'
+	end
+end
+	
+
+post '/reset_password' do
+	email = params[:email]
+	password = params[:password]
+	encrypted_password = BCrypt::Password.create(password)
+	db = connection()
+	sql1 = "UPDATE admin_users SET password = '#{encrypted_password}' WHERE email = '#{email}'"
+	sql2 = "SELECT firstname, lastname, address, address2, city, state, zip, phone, email,preferred_email 
+					FROM admin_users"
+ 	db.exec(sql1)
+redirect '/'
 end
