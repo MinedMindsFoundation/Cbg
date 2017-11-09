@@ -29,7 +29,7 @@
      <h4><%=article_info["article_month"]%></h4><br>
      <%index = 0 || index %>
      <%article_info["article_link"].gsub(/(\[\"|\"\])/, '').split('", "').each do  |link|%>
-     <a href=<%=link%>><%=article_info["article_name"].gsub(/(\[\"|\"\])/, '').split('", "')[index]%></a><br>
+     <a  target="_blank" href=<%=link%>><%=article_info["article_name"].gsub(/(\[\"|\"\])/, '').split('", "')[index]%></a><br>
      <%index += 1 %>
      <%end%>
      <%end%>
