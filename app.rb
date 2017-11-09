@@ -14,7 +14,7 @@ def connection()
     port: ENV['port'],
     dbname: ENV['dbname'],
     user: ENV['user'],
-    password: ENV['password']
+    password: ENV['db_password']
   }
   db = PG::Connection.new(db_params) #sets connection with db
 end
@@ -22,9 +22,9 @@ end
 
 options = { :address              => "smtp.gmail.com",
             :port                 => 587,
-            :domain               => 'localhost:4567',
-            :user_name            => 'joseph.p.mckenzie84@gmail.com',
-            :password             => 'Bubbadog10031984',
+            :domain               => ENV['domain'],
+            :user_name            => ENV['email'],
+            :password             => ENV['email_pass'],
             :authentication       => 'plain',
             :enable_starttls_auto => true  }
 
